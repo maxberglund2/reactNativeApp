@@ -16,7 +16,6 @@ function HomeScreen({ navigation }) {
   const date = new Date();
 
   useEffect(() => {
-    // Update the current time every second
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
       let formattedDate = new Intl.DateTimeFormat("en-GB", options).format(date);
@@ -32,18 +31,19 @@ function HomeScreen({ navigation }) {
 
     setCurrentWeek(date.getWeek());
 
-    // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Week {currentWeek}</Text>
-      <Text>{currentTime.toLocaleTimeString()}</Text>
-      <Text>{currentDate}</Text>
-      <Button title="Weather" onPress={() => navigation.navigate('Weather')} />
-      <Button title="News" onPress={() => navigation.navigate('News')} />
+    <Text style={styles.weekText}>Week {currentWeek}</Text>
+    <Text style={styles.timeText}>{currentTime.toLocaleTimeString()}</Text>
+    <Text style={styles.dateText}>{currentDate}</Text>
+    <View style={styles.buttonContainer}>
+      <Button title="Weather" onPress={() => navigation.navigate('Weather')} style={styles.button} />
+      <Button title="News" onPress={() => navigation.navigate('News')} style={styles.button} />
     </View>
+  </View>
   );
 }
 
@@ -64,29 +64,31 @@ function Weather() {
     };
 
     fetchWeather();
-  }, []); // Added empty dependency array to ensure useEffect runs only once
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      {weatherData && (
-        <>
-          <Text style={styles.location}>{weatherData.name}, {weatherData.sys.country}</Text>
-          <Text style={styles.mainTemp}>{weatherData.main.temp} °C</Text>
-          <Image 
-            style={styles.logo}
-            source={{
-              uri: `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`,
-            }}
-          />
-          <Text style={styles.description}>{weatherData.weather[0].description}</Text>
-          <Text>Feels like: {weatherData.main.feels_like} °C</Text>
-          <Text>Humidity: {weatherData.main.humidity} %</Text>
-          <Text>Wind: {weatherData.wind.speed} m/s</Text>
-          <Text>Clouds: {weatherData.clouds.all} %</Text>
-          <Text>Pressure: {weatherData.main.pressure} hPa</Text>
-        </>
-      )}
-    </View>
+    {weatherData && (
+      <>
+        <Text style={styles.location}>{weatherData.name}, {weatherData.sys.country}</Text>
+        <Text style={styles.mainTemp}>{weatherData.main.temp} °C</Text>
+        <Image 
+          style={styles.logo}
+          source={{
+            uri: `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`,
+          }}
+        />
+        <Text style={styles.description}>{weatherData.weather[0].description}</Text>
+        <View style={styles.weatherDetailsContainer}>
+          <Text style={styles.weatherDetailText}>Feels like: {weatherData.main.feels_like} °C</Text>
+          <Text style={styles.weatherDetailText}>Humidity: {weatherData.main.humidity} %</Text>
+          <Text style={styles.weatherDetailText}>Wind: {weatherData.wind.speed} m/s</Text>
+          <Text style={styles.weatherDetailText}>Clouds: {weatherData.clouds.all} %</Text>
+          <Text style={styles.weatherDetailText}>Pressure: {weatherData.main.pressure} hPa</Text>
+        </View>
+      </>
+    )}
+  </View>
   );
 }
 
@@ -149,7 +151,27 @@ function SelectedNews({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+  },
+  weekText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  timeText: {
+    fontSize: 18,
+    marginBottom: 5,
+  },
+  dateText: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '80%',
   },
   scrollView: {
     marginHorizontal: 10,
@@ -165,20 +187,33 @@ const styles = StyleSheet.create({
     width: 440,
     height: 380,
   },
-  mainTemp: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
   location: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  mainTemp: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
   },
   description: {
+    fontSize: 20,
+    marginBottom: 20,
     textTransform: 'capitalize',
-    textDecorationLine: 'underline',
-    fontSize: 18,
-    marginBottom: 30,
   },
+  weatherDetailsContainer: {
+    alignItems: 'center',
+  },
+  weatherDetailText: {
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  
   articleHeading: {
     padding: 10,
     fontSize: 20,

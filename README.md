@@ -13,7 +13,7 @@ A simple mobile app built with React Native, incorporating two different APIs fo
 
 The home page serves both as a navigation hub and a screen that displays the date, current week, and current time.
 
-![Home Page Image](https://github.com/maxberglund2/reactNativeApp/blob/main/assets/106820018/7d951f2e-009a-4965-bbb6-2db14fbd4e0b.png)
+![Home Page Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/9e8b8a56-4cbf-43be-acfa-f0249a6c0515)
 
 ---
 

@@ -26,7 +26,8 @@ The weather screen provides information about the weather in a hardcoded locatio
 - Description
 - and more...
 
-![Weather Page Image](https://github.com/maxberglund2/reactNativeApp/blob/main/assets/106820018/fd4df283-a3cc-4e1d-96cb-90ab7d20e32e.png)
+![Weather Page Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/9589d0b2-bc7e-41a9-b5a6-de17da43c4bf)
+
 
 ---
 

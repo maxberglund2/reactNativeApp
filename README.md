@@ -35,11 +35,7 @@ The weather screen provides information about the weather in a hardcoded locatio
 
 The news screen utilizes the "New York Times" API to showcase various articles. Users can click on an article to get more information, leading to a separate screen with additional details, including a description and an image.
 
-![News Page Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/ccbef707-0eec-437b-90c5-3068794ef201)
-
-Additional details
-
-![Additional Details Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/5ea45cec-6dad-4b10-ae89-521ba6b00f70)
+![News Page Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/ccbef707-0eec-437b-90c5-3068794ef201)![Additional Details Image](https://github.com/maxberglund2/reactNativeApp/assets/106820018/5ea45cec-6dad-4b10-ae89-521ba6b00f70)
 
 ---
 
